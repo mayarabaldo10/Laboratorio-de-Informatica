@@ -1,13 +1,13 @@
-var app = angular.module('<%= module %>App', ['datatables'])
-app.controller('<%= module %>Ctrl', function($scope, $compile, $http, DTOptionsBuilder, DTColumnBuilder) {
+var app = angular.module('testApp', ['datatables'])
+app.controller('testCtrl', function($scope, $compile, $http, DTOptionsBuilder, DTColumnBuilder) {
 
     /**
      * init the controller
      */
     $scope.init = function() {
         $scope.db = {}
-        $scope.<%= module %> = {}
-        $scope.<%= module %>s = {}
+        $scope.test = {}
+        $scope.tests = {}
         $scope.dtInstance = {};
         $scope.init_dataTable()
         $scope.new()
@@ -18,7 +18,7 @@ app.controller('<%= module %>Ctrl', function($scope, $compile, $http, DTOptionsB
      */
     $scope.edit = function(id) {
         $('#saveButton').show()
-        $scope.<%= module %> = $scope.db[id]
+        $scope.test = $scope.db[id]
     }
 
     /**
@@ -26,30 +26,29 @@ app.controller('<%= module %>Ctrl', function($scope, $compile, $http, DTOptionsB
      */
     $scope.new = function() {
         $('#saveButton').show()
-        $scope.<%= module %> = {
-            <% for(var i in attrs){
-                if(attrs[i].primary)continue
-            %><%=attrs[i].name%>: <%=JSON.stringify(attrs[i].value)%>,
-            <%}%>
+        $scope.test = {
+            att1: "",
+            att2: "",
+            
         }
     }
 
     $scope.view = function(id){
         $('#saveButton').hide();
-        $scope.<%= module %> = $scope.db[id]
+        $scope.test = $scope.db[id]
     }
 
     /**
      * confirm to delete supplier
      */
     $scope.remove = function(id) {
-        var <%= module %> = $scope.db[id]
-        if (<%= module %>) {
+        var test = $scope.db[id]
+        if (test) {
             ngcurd.confirm({
                 title: 'Confirm remove ',
-                message: 'Warning: all this <%= module %>\'s data will be removed!',
+                message: 'Warning: all this test\'s data will be removed!',
                 ok: function() {
-                    ngcurd.post('/<%= module %>/remove', {<%=primary.name%>: id}, {
+                    ngcurd.post('/test/remove', {att_id: id}, {
                         success: function(){
                             $scope.dtInstance.reloadData()
                         }
@@ -64,7 +63,7 @@ app.controller('<%= module %>Ctrl', function($scope, $compile, $http, DTOptionsB
      */
     $scope.save = function() {
 
-        ngcurd.post('/<%= module %>/update', $scope.<%= module %>, {
+        ngcurd.post('/test/update', $scope.test, {
             success: function(){
                 $scope.dtInstance.reloadData()
             }
@@ -78,7 +77,7 @@ app.controller('<%= module %>Ctrl', function($scope, $compile, $http, DTOptionsB
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('ajax', {
-                url: '/<%= module %>/query',
+                url: '/test/query',
                 type: 'POST'
             })
             // or here
@@ -92,13 +91,15 @@ app.controller('<%= module %>Ctrl', function($scope, $compile, $http, DTOptionsB
                 $compile(angular.element(row).contents())($scope);
             });
         $scope.dtColumns = [
-            <% for(var i in attrs){%>
-                DTColumnBuilder.newColumn('<%=attrs[i].name%>').withTitle('<%=attrs[i].title%>'),<%}%>
-                DTColumnBuilder.newColumn('<%=primary.name%>').withTitle('').notSortable().renderWith(function(col, type, row) {
-                    $scope.db[row.<%=primary.name%>] = row
-                    return '<button ng-click="view(' + row.<%=primary.name%> + ')" class="btn btn-default btn-circle" data-toggle="modal"  data-target="#edit_<%= module %>" ><i class="fa fa-eye"></i></button> '
-                         + '<button ng-click="edit(' + row.<%=primary.name%> + ')" class="btn btn-success btn-circle" data-toggle="modal"  data-target="#edit_<%= module %>"><i class="fa fa-edit"></i></button> ' 
-                         + '<button ng-click="remove(' + row.<%=primary.name%> + ')" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_<%= module %>" ><i class="fa fa-remove"></i></button>'
+            
+                DTColumnBuilder.newColumn('att_id').withTitle('Att Id'),
+                DTColumnBuilder.newColumn('att1').withTitle('Att1'),
+                DTColumnBuilder.newColumn('att2').withTitle('Att2'),
+                DTColumnBuilder.newColumn('att_id').withTitle('').notSortable().renderWith(function(col, type, row) {
+                    $scope.db[row.att_id] = row
+                    return '<button ng-click="view(' + row.att_id + ')" class="btn btn-default btn-circle" data-toggle="modal"  data-target="#edit_test" ><i class="fa fa-eye"></i></button> '
+                         + '<button ng-click="edit(' + row.att_id + ')" class="btn btn-success btn-circle" data-toggle="modal"  data-target="#edit_test"><i class="fa fa-edit"></i></button> ' 
+                         + '<button ng-click="remove(' + row.att_id + ')" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_test" ><i class="fa fa-remove"></i></button>'
                         
                 })
             ]

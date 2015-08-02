@@ -64,7 +64,9 @@ module.exports = {
         // Decide the output filename for use in targets below:
         
         scope.getTitle = function(title){
-            return title.substring(0, 1).toUpperCase() + title.substring(1)
+            return title.replace('_', ' ').replace(/\b\w+\b/g,function(word){
+              return word.substring(0,1).toUpperCase() + word.substring(1);
+            })
         }
 
         scope.module = scope.args[0]
@@ -84,7 +86,8 @@ module.exports = {
             var attr = {
                 name: scope.args[i],
                 title: scope.getTitle(scope.args[i]),
-                primary: i==1
+                primary: i==1,
+                value: ''
             }
             scope.attrs.push(attr)
 
@@ -118,12 +121,12 @@ module.exports = {
         './api/controllers/:moduleControllerFile': {
             template: 'controller.template.js'
         },
-        // './views/:module/index.ejs': {
-        //     template: 'view.template.js'
-        // },
-        // './assets/js/modules/:module/index.js': {
-        //     template: 'js.template.js'
-        // },
+        './views/:module/index.ejs': {
+            template: 'view.template.js'
+        },
+        './assets/js/modules/:module/index.js': {
+            template: 'js.template.js'
+        },
 
     },
 

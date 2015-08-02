@@ -46,7 +46,16 @@ module.exports = {
         //default search column is primary key
         /**
         * extend example:
-        * 
+        * search records by id like %search% or name like %search%
+        * cond = {
+        *       or: [{
+        *           id: {
+        *               'contains': search.value
+        *           }, name: {
+        *               'contains': search.value
+        *           }
+        *       }]
+        *   }
         */
 
         if (search && search.value) {
