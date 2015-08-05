@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-ng-curd",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "sails generate ng-curd",
   "main": "Generator.js",
   "scripts": {
