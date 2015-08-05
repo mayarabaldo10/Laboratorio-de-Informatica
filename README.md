@@ -25,8 +25,8 @@ $ sails generate scaffold user id name:string age:integer email:email
 
 ## Example Project
 
-[Test Project](https://github.com/shootsoft/sails-ng-curd/tree/master/tests)
-[WeBuyer](https://github.com/shootsoft/webuyer)
+- [Test Project](https://github.com/shootsoft/sails-ng-curd/tree/master/tests)
+- [WeBuyer](https://github.com/shootsoft/webuyer)
 
 ## Quick Start
 
