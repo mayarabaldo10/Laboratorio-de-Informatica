@@ -113,7 +113,7 @@ module.exports = {
             <%}%>
         }
         //TODO: model validation
-        if (<%=primary.name%> && !isNaN(<%=primary.name%>)) {
+        if (pkid && !isNaN(pkid)) {
             <%= service %>.update({
                 <%=primary.name%>: pkid
             }, model).exec(function(err, newmodel) {

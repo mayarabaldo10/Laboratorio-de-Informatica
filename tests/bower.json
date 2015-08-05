@@ -1,0 +1,28 @@
+{
+  "name": "sails-ng-curd-test",
+  "version": "0.0.0",
+  "homepage": "",
+  "authors": [
+    "Michael Yin"
+  ],
+  "description": "test project",
+  "keywords": [
+    "sails",
+    "curd",
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "datatables": "~1.10.4",
+    "datatables-plugins": "~1.0.1",
+    "datatables-responsive": "~1.0.3",
+    "angular": "~1.4.4",
+    "angular-datatables":"",
+    "toastr":"",
+    "blockUI":"",
+    "bootbox":"~4.4.0"
+  }
+}
