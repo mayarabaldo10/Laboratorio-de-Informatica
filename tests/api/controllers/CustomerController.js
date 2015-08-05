@@ -1,41 +1,46 @@
 /**
- * TestController
+ * CustomerController
  *
- * @description :: Server-side logic for managing test
+ * @description :: Server-side logic for managing customer
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 module.exports = {
 
     /**
-     * `TestController.index()`
+     * `CustomerController.index()`
      * return view only
      */
     index: function(req, res) {
-        return res.view('test/index', {
+        return res.view('customer/index', {
             footer: [
-                '/js/modules/test/index.js'
+                '/js/modules/customer/index.js'
             ]
         });
     },
 
     /**
-     * `TestController.query()`
+     * `CustomerController.query()`
      * This is jquery datatables format query
      * @see https://datatables.net/examples/data_sources/server_side.html
      */
     query: function(req, res) {
         var cols = [
-            'att_id', 
-            'att1', 
-            'att2', 
+            'id', 
+            'name', 
+            'address', 
+            'post', 
+            'phone', 
+            'province', 
+            'city', 
+            'region', 
         ]
         var all = req.allParams();
         var search = req.param('search')
         var order = req.param('order')
         if (!order.length) {
             order = [{
-                column: 'att_id',
+                column: 'id',
                 dir: 'desc'
             }]
         }
@@ -63,7 +68,7 @@ module.exports = {
         if (search && search.value) {
             cond = {
                 or: [{
-                    att_id: {
+                    id: {
                         'contains': search.value
                     }
                 }]
@@ -72,16 +77,16 @@ module.exports = {
             queryCond = JSON.parse(JSON.stringify(cond))
             queryCond.limit = limit
             queryCond.skip = skip
-            query = Test.find(queryCond)
+            query = Customer.find(queryCond)
 
         } else {
-            query = Test.find({
+            query = Customer.find({
                 limit: limit,
                 skip: skip,
             })
         }
 
-        Test.count(cond).exec(function(error, count) {
+        Customer.count(cond).exec(function(error, count) {
             query.sort(sort).then(function(data) {
                 //jquery datatables format
                 return res.json({
@@ -98,7 +103,7 @@ module.exports = {
 
 
     /**
-     * `TestController.update()`
+     * `CustomerController.update()`
      * update modle api
      */
     update: function(req, res) {
@@ -107,16 +112,21 @@ module.exports = {
                 msg: 'Server error'
             }
             //int primary id
-        var pkid = parseInt(req.param('att_id'))
+        var pkid = parseInt(req.param('id'))
         var model = {
-            att1: req.param('att1'),
-            att2: req.param('att2'),
+            name: req.param('name'),
+            address: req.param('address'),
+            post: req.param('post'),
+            phone: req.param('phone'),
+            province: req.param('province'),
+            city: req.param('city'),
+            region: req.param('region'),
             
         }
         //TODO: model validation
         if (pkid && !isNaN(pkid)) {
-            Test.update({
-                att_id: pkid
+            Customer.update({
+                id: pkid
             }, model).exec(function(err, newmodel) {
                 if (!err) {
                     rt.success = true
@@ -127,7 +137,7 @@ module.exports = {
                 return res.json(rt);
             })
         } else {
-            Test.create(model).exec(function(err, newmodel) {
+            Customer.create(model).exec(function(err, newmodel) {
                 if (!err) {
                     rt.success = true
                     rt.msg = ''
@@ -142,7 +152,7 @@ module.exports = {
 
 
     /**
-     * `TestController.remove()`
+     * `CustomerController.remove()`
      * remove model api
      */
     remove: function(req, res) {
@@ -151,10 +161,10 @@ module.exports = {
                 msg: 'Server error'
             }
         //int primary id
-        var pkid = parseInt(req.param('att_id'))
+        var pkid = parseInt(req.param('id'))
         if (pkid && !isNaN(pkid)) {
-            Test.destroy({
-                att_id: pkid
+            Customer.destroy({
+                id: pkid
             }).exec(function(err) {
                 if (!err) {
                     rt.success = true

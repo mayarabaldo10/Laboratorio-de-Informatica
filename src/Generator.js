@@ -128,6 +128,10 @@ module.exports = {
             template: 'js.template.js'
         },
 
+        './assets/js/modules/common.js': {
+            template: {templatePath: 'common.template.js', force: true} 
+        },
+
     },
 
 

@@ -63,7 +63,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">New/Edit Supplier</h4>
+                        <h4 class="modal-title" id="myModalLabel">New/Edit <%= title %></h4>
                     </div>
                     <div class="modal-body">
                         <form id="orderform" role="form" action="/orders/new" method="post">
@@ -76,7 +76,7 @@
                                             <div class="form-group">
                                                 <label><%=attrs[i].title%></label>
                                                 <input class="form-control" placeholder="<%=attrs[i].title%>" id="<%=module%>_<%=attrs[i].name%>" name="<%=module%>_<%=attrs[i].name%>" ng-model="<%=module%>.<%=attrs[i].name%>">
-                                                <p class="help-block"><%=title%>'s <%=attrs[i].name%></p>
+                                                <p class="help-block"><%=title%>'s <%=attrs[i].title%></p>
                                             </div><%}%>
                                         </div>
                                         <!-- /.row (nested) -->

@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 
         shell: {
             test: {
-                command: 'cd tests && sails generate ng-curd test att_id att1 att2'
+                command: 'cd tests && sails generate ng-curd test att_id att1 att2 && sails generate ng-curd customer id name address post phone province city region'
             }
         },
 

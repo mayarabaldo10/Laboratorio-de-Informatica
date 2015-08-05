@@ -11,7 +11,9 @@ CURD function based on
 
 # DEMO Project
 
+[tests](tests/README.md)
 [WeBuyer](https://github.com/shootsoft/webuyer)
+
 
 # Useage
 
@@ -33,6 +35,7 @@ $ sails generate scaffold user id name:string age:integer email:email
 
 #TODO
 
+- complete test project
 - support attribute type
 - help file
 - quick start
