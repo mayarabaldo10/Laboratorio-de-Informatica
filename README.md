@@ -1,6 +1,6 @@
 # sails-ng-curd
 
-Generate scaffold for sails application. Ajax create/update/remove/pagination/search.
+Generate scaffold for sails application. Ajax create/update/remove/pagination/search using JQuery and Angular.js.
 
 CURD function based on
 - [Sails](http://sailsjs.org/)
@@ -8,6 +8,7 @@ CURD function based on
 - [JQuery](https://jquery.com)
 - [JQuery Datatables](https://datatables.net)
 - [JQuery BlockUI](http://malsup.com/jquery/block/)
+- [Angular Datatables](https://l-lin.github.io/angular-datatables/)
 
 # Usage
 
