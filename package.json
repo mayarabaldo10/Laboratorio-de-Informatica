@@ -9,6 +9,5 @@
     "grunt-contrib-clean": "~0.6.0",
     "grunt-shell": "~1.1.2",
     "grunt-file-compare": "~1.0.5"
-
   }
 }

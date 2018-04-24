@@ -24,7 +24,6 @@
     "sails-disk": "~0.10.0",
     "sails-mysql": "",
     "sails-generate-ng-curd": ""
-    
   },
   "scripts": {
     "debug": "node debug app.js",
