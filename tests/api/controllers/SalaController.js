@@ -1,39 +1,34 @@
 /**
- * CustomerController
+ * SalaController
  *
- * @description :: Server-side logic for managing customer
+ * @description :: Server-side logic for managing Sala
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 module.exports = {
 
     /**
-     * `CustomerController.index()`
+     * `SalaController.index()`
      * return view only
      */
     index: function(req, res) {
-        return res.view('customer/index', {
+        return res.view('Sala/index', {
             footer: [
-                '/js/modules/customer/index.js'
+                '/js/modules/Sala/index.js'
             ]
         });
     },
 
     /**
-     * `CustomerController.query()`
+     * `SalaController.query()`
      * This is jquery datatables format query
      * @see https://datatables.net/examples/data_sources/server_side.html
      */
     query: function(req, res) {
         var cols = [
             'id', 
-            'name', 
-            'address', 
-            'post', 
-            'phone', 
-            'province', 
-            'city', 
-            'region', 
+            'numero', 
+            'bloco', 
         ]
         var all = req.allParams();
         var search = req.param('search')
@@ -77,16 +72,16 @@ module.exports = {
             queryCond = JSON.parse(JSON.stringify(cond))
             queryCond.limit = limit
             queryCond.skip = skip
-            query = Customer.find(queryCond)
+            query = Sala.find(queryCond)
 
         } else {
-            query = Customer.find({
+            query = Sala.find({
                 limit: limit,
                 skip: skip,
             })
         }
 
-        Customer.count(cond).exec(function(error, count) {
+        Sala.count(cond).exec(function(error, count) {
             query.sort(sort).then(function(data) {
                 //jquery datatables format
                 return res.json({
@@ -103,7 +98,7 @@ module.exports = {
 
 
     /**
-     * `CustomerController.update()`
+     * `SalaController.update()`
      * update modle api
      */
     update: function(req, res) {
@@ -114,18 +109,13 @@ module.exports = {
             //int primary id
         var pkid = parseInt(req.param('id'))
         var model = {
-            name: req.param('name'),
-            address: req.param('address'),
-            post: req.param('post'),
-            phone: req.param('phone'),
-            province: req.param('province'),
-            city: req.param('city'),
-            region: req.param('region'),
+            numero: req.param('numero'),
+            bloco: req.param('bloco'),
             
         }
         //TODO: model validation
         if (pkid && !isNaN(pkid)) {
-            Customer.update({
+            Sala.update({
                 id: pkid
             }, model).exec(function(err, newmodel) {
                 if (!err) {
@@ -137,7 +127,7 @@ module.exports = {
                 return res.json(rt);
             })
         } else {
-            Customer.create(model).exec(function(err, newmodel) {
+            Sala.create(model).exec(function(err, newmodel) {
                 if (!err) {
                     rt.success = true
                     rt.msg = ''
@@ -152,7 +142,7 @@ module.exports = {
 
 
     /**
-     * `CustomerController.remove()`
+     * `SalaController.remove()`
      * remove model api
      */
     remove: function(req, res) {
@@ -163,7 +153,7 @@ module.exports = {
         //int primary id
         var pkid = parseInt(req.param('id'))
         if (pkid && !isNaN(pkid)) {
-            Customer.destroy({
+            Sala.destroy({
                 id: pkid
             }).exec(function(err) {
                 if (!err) {

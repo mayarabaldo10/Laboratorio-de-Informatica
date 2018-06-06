@@ -1,5 +1,5 @@
 /**
- * Salas.js
+ * Agendamento.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,16 +13,13 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    id: { type: 'integer',
-	primaryKey: true,
-	autoincrement: true,
-		unique: true},
+    usuario: { type: 'string' },
 
-    nome: { type: 'string' },
+    salaId: { type: 'integer' },
 
-    sobrenome: { type: 'string' },
+    horaInicio: { type: 'string' },
 
-    ra: { type: 'stringring' }
+    horaFim: { type: 'string' }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

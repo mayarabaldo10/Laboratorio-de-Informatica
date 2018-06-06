@@ -1,35 +1,36 @@
 /**
- * SalasController
+ * AgendamentoController
  *
- * @description :: Server-side logic for managing salas
+ * @description :: Server-side logic for managing Agendamento
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 module.exports = {
 
     /**
-     * `SalasController.index()`
+     * `AgendamentoController.index()`
      * return view only
      */
     index: function(req, res) {
-        return res.view('salas/index', {
+        return res.view('Agendamento/index', {
             footer: [
-                '/js/modules/salas/index.js'
+                '/js/modules/Agendamento/index.js'
             ]
         });
     },
 
     /**
-     * `SalasController.query()`
+     * `AgendamentoController.query()`
      * This is jquery datatables format query
      * @see https://datatables.net/examples/data_sources/server_side.html
      */
     query: function(req, res) {
         var cols = [
             'id', 
-            'nome', 
-            'sobrenome', 
-            'ra', 
+            'usuario', 
+            'salaId', 
+            'horaInicio', 
+            'horaFim', 
         ]
         var all = req.allParams();
         var search = req.param('search')
@@ -73,16 +74,16 @@ module.exports = {
             queryCond = JSON.parse(JSON.stringify(cond))
             queryCond.limit = limit
             queryCond.skip = skip
-            query = Salas.find(queryCond)
+            query = Agendamento.find(queryCond)
 
         } else {
-            query = Salas.find({
+            query = Agendamento.find({
                 limit: limit,
                 skip: skip,
             })
         }
 
-        Salas.count(cond).exec(function(error, count) {
+        Agendamento.count(cond).exec(function(error, count) {
             query.sort(sort).then(function(data) {
                 //jquery datatables format
                 return res.json({
@@ -99,7 +100,7 @@ module.exports = {
 
 
     /**
-     * `SalasController.update()`
+     * `AgendamentoController.update()`
      * update modle api
      */
     update: function(req, res) {
@@ -110,14 +111,15 @@ module.exports = {
             //int primary id
         var pkid = parseInt(req.param('id'))
         var model = {
-            nome: req.param('nome'),
-            sobrenome: req.param('sobrenome'),
-            ra: req.param('ra'),
+            usuario: req.param('usuario'),
+            salaId: req.param('salaId'),
+            horaInicio: req.param('horaInicio'),
+            horaFim: req.param('horaFim'),
             
         }
         //TODO: model validation
         if (pkid && !isNaN(pkid)) {
-            Salas.update({
+            Agendamento.update({
                 id: pkid
             }, model).exec(function(err, newmodel) {
                 if (!err) {
@@ -129,7 +131,7 @@ module.exports = {
                 return res.json(rt);
             })
         } else {
-            Salas.create(model).exec(function(err, newmodel) {
+            Agendamento.create(model).exec(function(err, newmodel) {
                 if (!err) {
                     rt.success = true
                     rt.msg = ''
@@ -144,7 +146,7 @@ module.exports = {
 
 
     /**
-     * `SalasController.remove()`
+     * `AgendamentoController.remove()`
      * remove model api
      */
     remove: function(req, res) {
@@ -155,7 +157,7 @@ module.exports = {
         //int primary id
         var pkid = parseInt(req.param('id'))
         if (pkid && !isNaN(pkid)) {
-            Salas.destroy({
+            Agendamento.destroy({
                 id: pkid
             }).exec(function(err) {
                 if (!err) {

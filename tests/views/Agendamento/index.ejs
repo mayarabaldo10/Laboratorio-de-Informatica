@@ -1,7 +1,7 @@
 <!-- .row title -->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Customer</h1>
+        <h1 class="page-header">Agendamento</h1>
         
     </div>
     <!-- /.col-lg-12 -->
@@ -9,10 +9,10 @@
 <!-- /.row -->
 
 <!-- .row body -->
-<div class="row" ng-app="customerApp" ng-controller="customerCtrl">
+<div class="row" ng-app="AgendamentoApp" ng-controller="AgendamentoCtrl">
     <div class="row" style="margin-bottom:5px;">
         <div class="col-md-2">
-            <button type="button" class="btn btn-primary" ng-click="new()" data-toggle="modal" data-target="#edit_customer"><i class="fa fa-plus" ></i> New</button>
+            <button type="button" class="btn btn-primary" ng-click="new()" data-toggle="modal" data-target="#edit_Agendamento"><i class="fa fa-plus" ></i> New</button>
         </div>
         <!-- /.col-lg-2 -->
         <div class="col-md-7">
@@ -42,13 +42,10 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Post</th>
-                                    <th>Phone</th>
-                                    <th>Province</th>
-                                    <th>City</th>
-                                    <th>Region</th>
+                                    <th>Usuario</th>
+                                    <th>SalaId</th>
+                                    <th>HoraInicio</th>
+                                    <th>HoraFim</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -64,13 +61,13 @@
         </div>
         <!-- /.col-lg-12 -->
 
-        <!-- edit_customer Modal -->
-        <div class="modal fade" id="edit_customer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- edit_Agendamento Modal -->
+        <div class="modal fade" id="edit_Agendamento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">New/Edit Customer</h4>
+                        <h4 class="modal-title" id="myModalLabel">New/Edit Agendamento</h4>
                     </div>
                     <div class="modal-body">
                         <form id="orderform" role="form" action="/orders/new" method="post">
@@ -78,42 +75,27 @@
                             <div class="col-lg-12">
                                  <div class="panel-body">
                                         <div class="row">
-                                            <input type="hidden" id="customer_id" name="customer_id" ng-model="customer.id">
+                                            <input type="hidden" id="Agendamento_id" name="Agendamento_id" ng-model="Agendamento.id">
                                             
                                             <div class="form-group">
-                                                <label>Name</label>
-                                                <input class="form-control" placeholder="Name" id="customer_name" name="customer_name" ng-model="customer.name">
-                                                <p class="help-block">Customer's Name</p>
+                                                <label>Usuario</label>
+                                                <input class="form-control" placeholder="Usuario" id="Agendamento_usuario" name="Agendamento_usuario" ng-model="Agendamento.usuario">
+                                                <p class="help-block">Agendamento's Usuario</p>
                                             </div>
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input class="form-control" placeholder="Address" id="customer_address" name="customer_address" ng-model="customer.address">
-                                                <p class="help-block">Customer's Address</p>
+                                                <label>SalaId</label>
+                                                <input class="form-control" placeholder="SalaId" id="Agendamento_salaId" name="Agendamento_salaId" ng-model="Agendamento.salaId">
+                                                <p class="help-block">Agendamento's SalaId</p>
                                             </div>
                                             <div class="form-group">
-                                                <label>Post</label>
-                                                <input class="form-control" placeholder="Post" id="customer_post" name="customer_post" ng-model="customer.post">
-                                                <p class="help-block">Customer's Post</p>
+                                                <label>HoraInicio</label>
+                                                <input class="form-control" placeholder="HoraInicio" id="Agendamento_horaInicio" name="Agendamento_horaInicio" ng-model="Agendamento.horaInicio">
+                                                <p class="help-block">Agendamento's HoraInicio</p>
                                             </div>
                                             <div class="form-group">
-                                                <label>Phone</label>
-                                                <input class="form-control" placeholder="Phone" id="customer_phone" name="customer_phone" ng-model="customer.phone">
-                                                <p class="help-block">Customer's Phone</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Province</label>
-                                                <input class="form-control" placeholder="Province" id="customer_province" name="customer_province" ng-model="customer.province">
-                                                <p class="help-block">Customer's Province</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input class="form-control" placeholder="City" id="customer_city" name="customer_city" ng-model="customer.city">
-                                                <p class="help-block">Customer's City</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Region</label>
-                                                <input class="form-control" placeholder="Region" id="customer_region" name="customer_region" ng-model="customer.region">
-                                                <p class="help-block">Customer's Region</p>
+                                                <label>HoraFim</label>
+                                                <input class="form-control" placeholder="HoraFim" id="Agendamento_horaFim" name="Agendamento_horaFim" ng-model="Agendamento.horaFim">
+                                                <p class="help-block">Agendamento's HoraFim</p>
                                             </div>
                                         </div>
                                         <!-- /.row (nested) -->

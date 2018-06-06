@@ -1,7 +1,7 @@
 <!-- .row title -->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Salas</h1>
+        <h1 class="page-header">Sala</h1>
         
     </div>
     <!-- /.col-lg-12 -->
@@ -9,10 +9,10 @@
 <!-- /.row -->
 
 <!-- .row body -->
-<div class="row" ng-app="salasApp" ng-controller="salasCtrl">
+<div class="row" ng-app="SalaApp" ng-controller="SalaCtrl">
     <div class="row" style="margin-bottom:5px;">
         <div class="col-md-2">
-            <button type="button" class="btn btn-primary" ng-click="new()" data-toggle="modal" data-target="#edit_salas"><i class="fa fa-plus" ></i> New</button>
+            <button type="button" class="btn btn-primary" ng-click="new()" data-toggle="modal" data-target="#edit_Sala"><i class="fa fa-plus" ></i> New</button>
         </div>
         <!-- /.col-lg-2 -->
         <div class="col-md-7">
@@ -42,9 +42,8 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nome</th>
-                                    <th>Sobrenome</th>
-                                    <th>Ra</th>
+                                    <th>Numero</th>
+                                    <th>Bloco</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -60,13 +59,13 @@
         </div>
         <!-- /.col-lg-12 -->
 
-        <!-- edit_salas Modal -->
-        <div class="modal fade" id="edit_salas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- edit_Sala Modal -->
+        <div class="modal fade" id="edit_Sala" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">New/Edit Salas</h4>
+                        <h4 class="modal-title" id="myModalLabel">New/Edit Sala</h4>
                     </div>
                     <div class="modal-body">
                         <form id="orderform" role="form" action="/orders/new" method="post">
@@ -74,22 +73,17 @@
                             <div class="col-lg-12">
                                  <div class="panel-body">
                                         <div class="row">
-                                            <input type="hidden" id="salas_id" name="salas_id" ng-model="salas.id">
+                                            <input type="hidden" id="Sala_id" name="Sala_id" ng-model="Sala.id">
                                             
                                             <div class="form-group">
-                                                <label>Nome</label>
-                                                <input class="form-control" placeholder="Nome" id="salas_nome" name="salas_nome" ng-model="salas.nome">
-                                                <p class="help-block">Salas's Nome</p>
+                                                <label>Numero</label>
+                                                <input class="form-control" placeholder="Numero" id="Sala_numero" name="Sala_numero" ng-model="Sala.numero">
+                                                <p class="help-block">Sala's Numero</p>
                                             </div>
                                             <div class="form-group">
-                                                <label>Sobrenome</label>
-                                                <input class="form-control" placeholder="Sobrenome" id="salas_sobrenome" name="salas_sobrenome" ng-model="salas.sobrenome">
-                                                <p class="help-block">Salas's Sobrenome</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Ra</label>
-                                                <input class="form-control" placeholder="Ra" id="salas_ra" name="salas_ra" ng-model="salas.ra">
-                                                <p class="help-block">Salas's Ra</p>
+                                                <label>Bloco</label>
+                                                <input class="form-control" placeholder="Bloco" id="Sala_bloco" name="Sala_bloco" ng-model="Sala.bloco">
+                                                <p class="help-block">Sala's Bloco</p>
                                             </div>
                                         </div>
                                         <!-- /.row (nested) -->
